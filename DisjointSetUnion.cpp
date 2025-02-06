@@ -20,34 +20,32 @@ typedef long long ll;
 #define ld long double
 #define endl '\n'
 #define mod 1000000007
-const int MXN=1e5+10;
-const int INF=INT_MAX;
+const int N=1e5+10, INF=INT_MAX;
 
 struct disjoint{
-        ll p[MXN];
-        ll sz[MXN];
-        void Build(ll n)
-        {
-            for(ll i = 0; i<=n; i++) p[i]=i, sz[i] = 1;
-        }
-        ll Find(ll x)
-        {
-            return x==p[x]?x:p[x]=Find(p[x]);
-        }
-        void Union(ll a, ll b)
-        {
-            a = Find(a);
-            b = Find(b);
-            if(a == b) return;
-            if(sz[a] < sz[b]) swap(a,b);
-            p[b] = a;
-            sz[a] += sz[b];
-        }
-        ll Size(ll n)
-        {
-            n = Find(n);
-            return sz[n];
-        }
+    int p[N], sz[N];
+    void Build(int n)
+    {
+        for(int i = 0; i <= n; i++) p[i] = i, sz[i] = 1;
+    }
+    int Find(int x)
+    {
+        return x==p[x]?x:p[x]=Find(p[x]);
+    }
+    void Union(int a, int b)
+    {
+        a = Find(a);
+        b = Find(b);
+        if(a == b) return;
+        if(sz[a] < sz[b]) swap(a,b);
+        p[b] = a;
+        sz[a] += sz[b];
+    }
+    int Size(int n)
+    {
+        n = Find(n);
+        return sz[n];
+    }
 };
 
 void solve(){
