@@ -33,3 +33,16 @@
     freopen("output.txt","w",stdout);
     #endif 
 ```
+
+
+# Steps to compile and run the code
+```bash
+    g++ a.cpp -o a.exe && ./a.exe
+```
+
+### Steps to compile and run the code with input.txt and output.txt
+```bash
+    g++ a.cpp -o a.exe && ./a.exe < input.txt > output.txt
+    # only for input.txt
+    g++ a.cpp -o a.exe && ./a.exe < input.txt
+```
