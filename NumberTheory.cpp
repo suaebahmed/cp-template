@@ -2,10 +2,8 @@
 using namespace std;
 #define int long long
 
-int extd_gcd(int a,int b,int *x,int *y)
-{
-    if(a == 0)
-    {
+int extd_gcd(int a,int b,int *x,int *y){
+    if(a == 0){
         *x = 0; *y = 1;
         return b;
     }
@@ -16,17 +14,16 @@ int extd_gcd(int a,int b,int *x,int *y)
     return d;
 }
 
-int fastexpo(int a,int b,int md)
-{
+int fastexpo(int a,int b,int md){
     int res=1;
-    while(b)
-    {
+    while(b){
         if(b&1) res = (res*a)%md;
         a = (a*a)%md;
         b>>=1;
     }
     return res;
 }
+
 int modInverse(int n,int md){
     return fastexpo(n,md-2,md);
 }
@@ -56,7 +53,7 @@ const int N = 1e6+1;
 vector<int> prime;
 int spf[N];
 
-void SIEVE(){
+void sieve(){
     spf[1] = 1;
     for(int i=2; i<N; i++) spf[i] = i;
 
@@ -75,7 +72,7 @@ bitset<_N> isPrime;
 bool marked[PRIME_RANGE];
 // Sometime we need this type of sieve for time and space optimization!
 
-void SIEVE(){
+void sieve(){
     isPrime[1] = 0;
     for(int i=2; i<_N; i++) isPrime[i] = 1;
 

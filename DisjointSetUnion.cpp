@@ -23,28 +23,28 @@ typedef long long ll;
 const int N=1e5+10, INF=INT_MAX;
 
 struct disjoint{
-    int p[N], sz[N];
-    void Build(int n)
-    {
-        for(int i = 0; i <= n; i++) p[i] = i, sz[i] = 1;
+    vector<int> p, sz;
+    void Build(int n) {
+        p.assign(n + 1, 0);
+        sz.assign(n + 1, 1);
+        for(int i = 0; i <= n; i++) {
+            p[i] = i;
+        }
     }
-    int Find(int x)
-    {
-        return x==p[x]?x:p[x]=Find(p[x]);
+    int Find(int x) {
+        if(x != p[x]) p[x] = Find(p[x]);
+        return p[x];
     }
-    void Union(int a, int b)
-    {
+    void Union(int a, int b) {
         a = Find(a);
         b = Find(b);
         if(a == b) return;
-        if(sz[a] < sz[b]) swap(a,b);
+        if(sz[a] < sz[b]) swap(a, b);
         p[b] = a;
         sz[a] += sz[b];
     }
-    int Size(int n)
-    {
-        n = Find(n);
-        return sz[n];
+    int Size(int n) {
+        return sz[Find(n)];
     }
 };
 
